@@ -1,3 +1,7 @@
 <h1>
-セールス登録ありがとう！
+<%= @sale.email %><br />
+セールスページ
 </h1>
+<p class="text-center">
+<%= link_to "Log out", logout_path, method: "delete" %>
+</p>
