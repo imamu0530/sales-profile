@@ -1,6 +1,6 @@
 class SalesController < ApplicationController
-before_action :set_sale, only: [:edit,:update]
-before_action :check_sale,only: [:edit, :update]
+before_action :set_sale, only: [:edit, :update, :preview]
+before_action :check_sale,only: [:edit, :update, :preview]
 
   def show
    @sale = Sale.find(params[:id])
@@ -25,19 +25,23 @@ before_action :check_sale,only: [:edit, :update]
 
   def update
     if @sale.update(sale_params)
-      # 保存に成功した場合はトップページへリダイレクト
+      # 保存に成功した場合はそのページのまま
       redirect_to edit_sale_path
     else
       # 保存に失敗した場合は編集画面へ戻す
       render 'edit'
     end
   end
+  
+  def preview
+    @sale = Sale.find(params[:id])
+  end
 
   private
 
   def sale_params
     params.require(:sale).permit(:email, :password,
-                                 :password_confirmation, :name, :pr)
+                                 :password_confirmation,:name,:pr,:tel,:myself,:policy,:genre,:carrer,:office,:private)
   end
 
   def set_sale

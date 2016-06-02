@@ -1,8 +1,11 @@
-<h1>
-<%= @sale.email %><br />
-セールスページ
-</h1>
-<p class="text-center">
-    <%= link_to "プロフィール編集", edit_sale_path %>  
-    <%= link_to "ログアウト", logout_path, method: "delete" %>
-</p>
+<%= render 'sales_header' , sale: @sale %>
+
+<div class="container">
+    <h2><%= @sale.email %><br />セールスページトップ</h2>
+
+    <p class="text-center">
+        <%= link_to "プロフィール編集", edit_sale_path %>  
+    </p>
+</div>
+
+<%= render 'sales/sales_footer' , sale: @sale %>
